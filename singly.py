@@ -13,11 +13,18 @@ class LinkedList:
 
     def add_first(self, value):
         new_node = self.__Node(value)
-        if self.__head is None:
-            self.__head = self.__tail = new_node
+        if self.__is_empty():
+            self.__initialize(new_node)
         else:
             new_node.next = self.__head
             self.__head = new_node
+
+    def __is_empty(self):
+        return self.__head is None
+
+    def __initialize(self, new_node):
+        self.__head = self.__tail = new_node
+
 
 
 ll = LinkedList()
