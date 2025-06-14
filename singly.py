@@ -11,5 +11,16 @@ class LinkedList:
         self.__head = None
         self.__tail = None
 
+    def add_first(self, value):
+        new_node = self.__Node(value)
+        if self.__head is None:
+            self.__head = self.__tail = new_node
+        else:
+            new_node.next = self.__head
+            self.__head = new_node
+
 
 ll = LinkedList()
+ll.add_first(1)
+ll.add_first(2)
+print('')
