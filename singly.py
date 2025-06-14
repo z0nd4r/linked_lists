@@ -19,6 +19,14 @@ class LinkedList:
             new_node.next = self.__head
             self.__head = new_node
 
+    def add_last(self, value):
+        new_node = self.__Node(value)
+        if self.__is_empty():
+            self.__initialize(new_node)
+        else:
+            self.__tail.next = new_node
+            self.__tail = new_node
+
     def __is_empty(self):
         return self.__head is None
 
@@ -28,6 +36,8 @@ class LinkedList:
 
 
 ll = LinkedList()
+ll.add_last(13)
 ll.add_first(1)
 ll.add_first(2)
+ll.add_last(34)
 print('')
