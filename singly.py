@@ -37,7 +37,26 @@ class LinkedList:
         self.__head = None
         self.__head = next
 
-        print(f'removed: {removed_value}')
+        print(f'removed_head: {removed_value}')
+
+    def remove_last(self):
+        if self.__is_empty():
+            return ValueError('Cannot remove an element from an empty list')
+
+        removed_value = self.__tail
+
+        value = self.__head
+        next = self.__head.next
+        
+        while next != removed_value:
+            value = next
+            next = next.next
+
+        self.__tail = None
+        self.__tail = value
+
+        print(f'removed_tail: {removed_value}')
+
 
     def __is_empty(self):
         return self.__head is None
@@ -52,4 +71,5 @@ ll.add_first(1)
 ll.add_first(2)
 ll.add_last(34)
 ll.remove_first()
+ll.remove_last()
 print('')
