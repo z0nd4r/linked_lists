@@ -33,30 +33,59 @@ class LinkedList:
 
         removed_value = self.__head
 
-        next = self.__head.next
+        next_val = self.__head.next
         self.__head = None
-        self.__head = next
+        self.__head = next_val
 
         print(f'removed_head: {removed_value}')
 
     def remove_last(self):
         if self.__is_empty():
-            return ValueError('Cannot remove an element from an empty list')
+            print(ValueError(f'{self.remove.__func__.__name__}: Cannot remove an element from an empty list'))
 
         removed_value = self.__tail
 
-        value = self.__head
-        next = self.__head.next
+        val = self.__head
+        next_val = self.__head.next
         
-        while next != removed_value:
-            value = next
-            next = next.next
+        while next_val != removed_value:
+            val = next_val
+            next_val = next_val.next
 
         self.__tail = None
-        self.__tail = value
+        self.__tail = val
 
         print(f'removed_tail: {removed_value}')
 
+    def remove(self, value):
+        removed_value = self.__Node(value)
+
+        val = self.__head
+        next_val = self.__head.next
+        old_val = val
+
+        try:
+            while removed_value.value != val.value:
+                old_val = val
+                val = next_val
+                next_val = val.next
+
+            if val == self.__head and val == self.__tail:
+                self.__head = None
+                self.__tail = None
+            elif val == self.__head:
+                self.__head = next_val
+            elif val == self.__tail:
+                self.__tail = old_val
+                old_val.next = None
+            else:
+                old_val.next = next_val
+                val = None
+
+            print(f'removed_value: {removed_value}')
+
+        except:
+            print(ValueError(f"{self.remove.__func__.__name__}: Cannot remove an element, he's not on the list"))
 
     def __is_empty(self):
         return self.__head is None
@@ -70,6 +99,9 @@ ll.add_last(13)
 ll.add_first(1)
 ll.add_first(2)
 ll.add_last(34)
-ll.remove_first()
-ll.remove_last()
+ll.remove(2)
+# ll.remove(1)
+ll.remove(13)
+ll.remove(34)
+
 print('')
