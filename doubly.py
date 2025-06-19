@@ -21,8 +21,14 @@ class LinkedList:
             self.__head.prev = new_node
             self.__head = new_node
 
-    def add_last(self):
-        pass
+    def add_last(self, value):
+        new_node = self.__Node(value)
+        if self.__is_empty():
+            self.__initialize(new_node)
+        else:
+            self.__tail.next = new_node
+            new_node.prev = self.__tail
+            self.__tail = new_node
 
     def remove_first(self):
         pass
@@ -46,5 +52,6 @@ class LinkedList:
 ll = LinkedList()
 ll.add_first(1)
 ll.add_first(2)
+ll.add_last(4)
 
 print('')
