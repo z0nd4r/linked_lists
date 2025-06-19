@@ -56,6 +56,7 @@ class LinkedList:
 
         self.__tail = None
         self.__tail = val
+        self.__tail.next = None
 
         print(f'removed_tail: {removed_value}')
 
@@ -90,6 +91,10 @@ class LinkedList:
             print(ValueError(f"{self.remove.__func__.__name__}: Cannot remove an element, he's not on the list"))
 
     def print(self):
+        if self.__is_empty():
+            print(f'{self.print.__func__.__name__}: The list is empty')
+            return
+
         val = self.__head
         next_val = self.__head.next
 
@@ -116,7 +121,12 @@ ll.add_last(34)
 # ll.remove(2)
 # ll.remove(1)
 # ll.remove(13)
-ll.remove(34)
+ll.remove_first()
+ll.remove_last()
+ll.remove_first()
+ll.remove_first()
+ll.remove_last()
+ll.remove_first()
 ll.print()
 
 print('')
