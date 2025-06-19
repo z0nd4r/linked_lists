@@ -100,7 +100,6 @@ class LinkedList:
             return
 
         val = self.__head
-        next_val = self.__head.next
 
         lst = []
 
