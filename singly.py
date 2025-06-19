@@ -87,6 +87,18 @@ class LinkedList:
         except:
             print(ValueError(f"{self.remove.__func__.__name__}: Cannot remove an element, he's not on the list"))
 
+    def print(self):
+        val = self.__head
+        next_val = self.__head.next
+
+        lst = []
+
+        while val != self.__tail.next:
+            lst.append(val.value)
+            val = val.next
+
+        print(f'All values: {lst}')
+
     def __is_empty(self):
         return self.__head is None
 
@@ -99,9 +111,10 @@ ll.add_last(13)
 ll.add_first(1)
 ll.add_first(2)
 ll.add_last(34)
-ll.remove(2)
+# ll.remove(2)
 # ll.remove(1)
-ll.remove(13)
+# ll.remove(13)
 ll.remove(34)
+ll.print()
 
 print('')
