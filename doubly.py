@@ -31,7 +31,16 @@ class LinkedList:
             self.__tail = new_node
 
     def remove_first(self):
-        pass
+        if self.__is_empty():
+            print(f'{self.remove_first.__func__.__name__}Cannot remove an element from an empty list')
+            return
+
+        removed_value = self.__head
+
+        self.__head.next.prev = None
+        self.__head = self.__head.next
+
+        print(f'removed_head: {removed_value}')
 
     def remove_last(self):
         pass
@@ -52,6 +61,8 @@ class LinkedList:
 ll = LinkedList()
 ll.add_first(1)
 ll.add_first(2)
+ll.add_first(5)
 ll.add_last(4)
+ll.remove_first()
 
 print('')
